@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#Will display all current working processes.
+
+ps -auxf
