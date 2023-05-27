@@ -1,0 +1,25 @@
+## Description
+
+This is a simple web infrastructure that hosts a website that is reachable via www.foobar.com // But here we decided to add another server to demonstrate how will a load balance work...
+
+## Specifics About This FLOW
+
++ What distribution algorithm your load balancer is configured with and how it works.<br/> This load balancer will be initiated using the Round-Roubin Algo, Which is so simple that it'll distrbute the workforce 50/50 between the 2 servers 'Active-Active' OR if it's 'Active-Passisve' then there'll be the HeartBeat service attatched to the main server, if the server doesn't respond with-in specific amount of time it'll transfer the workload to the other server... Depending on the buisness logic we might want to choose other Advanced Algos but we'll choose this for now as we can test our logic with it.
+
++ Active-Passisve Or Active-Active.<br/> We are choosing Active-Passive here and we've already discussed what's the difference between them...
+
++ How a database Primary-Replica (Master-Slave) cluster works.<br/> Master-Slave works like the following.. "Master" A main database that every change gets done on it and then write it on the transactions-log then the slave which is on the stand-by on the other server does every change that happened on the Master from the transactions-log to be on the stand-by incase of any faliure happens to the Master, but if nothing happens the Master will be assinged for Write/Read and the Slave will be assigned to Read to divide the load instead of 1 to read from now we have 2, the slave hopefully depending on the connection "Async. or Synch." will be up to date
+
++ The difference between the Primary node and the Replica node in regard to the application.<br/>
+The Primary node is responsible for all the write operations the site needs whilst the Replica node is capable of processing read operations, which decreases the read traffic to the Primary node.
+
++ What is the role of the application server.<br/> The role of App-Server enable interaction between end-user clients and server-side application code—the code representing what is often called business logic—to generate and deliver dynamic content, such as transaction results, decision support, or real-time analytics. The client for an application server can be the application’s own end-user UI, a web browser, or a mobile app, and the client-server interaction can occur via any number of communication protocols.
+
+## Issues with this infrastructure
+
++ SPOF.<br/> Here will be the server containing the load balancer.
+
++ Security issues.<br/> The data transmitted over the network isn't encrypted using an SSL certificate so hackers can spy on the network. There is no way of blocking unauthorized IPs since there's no firewall installed on any server.
+
++ No monitoring.<br/> We have no way of knowing the status of each server since they're not being monitored.
+

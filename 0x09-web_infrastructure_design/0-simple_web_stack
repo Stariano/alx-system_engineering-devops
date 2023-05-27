@@ -1,0 +1,29 @@
+## Description
+
+This is a simple web infrastructure that hosts a website that is reachable via www.foobar.com. There are no firewalls or SSL certificates for protecting the server's network. Each component (database, application server) has to share the resources (CPU, RAM, and SSD) provided by the server.
+
+## Specifics About This FLOW
+
++ What a server is.<br/> A server is a hardware computer that is designed to host content on it that contains alot of Hard-drives, RAMs, ETC..
+
++ What is the role of the domain name.<br/> The role of the domain name is to make the searching human readable imagine that if there were no doamin name you would have to memorize the IP server digits which is not human readable or memorizable.
+
++ What type of DNS record www is in www.foobar.com.<br/> It's an A Record because www is linked to the IP of the server.
+
++ The role of the web server.<br/> Actually NGINX is a mix of an WEB SERVER and AN APP SERVER but anyways WEB-SERVERS provide the ability to recive traffic on HTTP protocl "Stateless" and Respond to the user with the data that was requested.
+
++ What is the role of the application server.<br/> The role of App-Server enable interaction between end-user clients and server-side application code—the code representing what is often called business logic—to generate and deliver dynamic content, such as transaction results, decision support, or real-time analytics. The client for an application server can be the application’s own end-user UI, a web browser, or a mobile app, and the client-server interaction can occur via any number of communication protocols.
+
++ What is the role of the database.<br/> To save the data in an Table format to later on provide it to the codebase or the SysAdmin.
+
++ What is the server using to communicate with the computer of the user requesting the website.<br/> The Server is using HTTP protocol to communicate with the CLIENT.
+
+## Issues with this infrastructure
+
++ SPOF: Single-Point-Of-Failure<br/> Here this flow-chart is not well designed that it anything happens to the (Server, Codebase, MYSQL), there will be no backup which is an big issue in today's world "the entire site would be down".
+
++ Downtime when maintenance needed.<br/> There's no other server that we could hang on or any other service that would have provided stability if we wanted to do an update so we will have to shutoff the server completly, finish our edit and Push back which is not managable at all.
+
++ Cannot scale if too much incoming traffic.<br/> There's only one server and all of our services is deployed on the same server, so let's imagine that we do "Vertical-Scaling" There'll be an end to the Resources that we can offer to put in 1 server so this wouldn't be applicable and we would have to divide our services on other servers and use LOAD BALANCERS to provide stability and logic.
+
+
