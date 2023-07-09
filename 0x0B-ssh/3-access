@@ -1,0 +1,1 @@
+ssh-copy-id -i id_rsa.pub ubuntu@100.25.29.203
